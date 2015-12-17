@@ -1,0 +1,34 @@
+extends ./../templates/1column.jade
+block content
+  div.responsible-table
+    table.table.table-striped
+      thead
+        tr
+          th #
+          th First Name
+          th Last Name
+          th E-mail
+          th Activated
+          th Role
+          th Edit
+          th Delete
+      tbody
+        each user in users
+          tr
+            td= user.userId
+            td= user.firstname
+            td= user.lastname
+            td= user.email
+            if user.isActive == 1
+              td Yes
+            else 
+              td No
+            td= user['role.roleName']
+            td 
+              a(href='/user/edit/' + user.userId) 
+                button.btn.btn-primary Edit
+            td
+              form(method='POST', action='/user/delete/'+user.userId)
+                button.btn.btn-danger(type="submit") Delete
+
+        

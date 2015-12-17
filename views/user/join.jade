@@ -1,0 +1,22 @@
+extends ./../templates/1column.jade
+block content
+  h1 Join to WirelessHome
+  form(method='POST', action='/create')
+    div.form-group
+      label(for='firstname') Firstname
+      input.form-control#firstname(type='text', name='firstname', placeholder='Firstname')
+    div.form-group
+      label(for='lastname') Lastname
+      input.form-control#lastname(type='text', name='lastname', placeholder='Lastname')
+    label(for='password') Password
+    input.form-control#password(type='password', name='password', placeholder='Password')
+    div.form-group
+      label(for='confirm_password') Confirm Password
+      input.form-control#confirm_password(type='password', name='confirm_password', placeholder='Confirm Password')
+    div.form-group
+      label(for='email') Email address
+      input.form-control#email(type='email', name='email', placeholder='Email address')
+    div.form-group
+      label(for='confirm_email') Confirm Email Address
+      input.form-control#confirm_email(type='email', name='confirm_email', placeholder='Confirm Email Address')
+    button.btn.btn-success(type='submit') Register

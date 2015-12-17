@@ -1,0 +1,4 @@
+each deviceMenuElement in deviceMenuElements
+  a(href="/device/manage/view/"+deviceMenuElement.deviceTypeId, title="#{deviceMenuElement.deviceTypeName}", alt="#{deviceMenuElement.deviceTypeName}")
+    div.menu-element
+      span= deviceMenuElement.deviceTypeName

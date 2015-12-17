@@ -1,0 +1,44 @@
+extends ./../templates/1column.jade
+block content
+  h1= "Edit user " + user.firstname + " " + user.lastname 
+  form(method='POST', action='/user/update/'+user.userId)
+    div.form-group
+      label(for='firstname') Firstname
+      input.form-control#firstname(type='text', name='firstname', placeholder='Firstname' value="#{user.firstname}")
+    div.form-group
+      label(for='lastname') Lastname
+      input.form-control#lastname(type='text', name='lastname', placeholder='Lastname' value="#{user.lastname}")
+    div.form-group
+      label(for='email') Email address
+      input.form-control#email(type='email', name='email', placeholder='Email address' value="#{user.email}")
+    div.form-group
+      label(for='isActive') Activated
+      select.form-control#isActive(name="isActive")
+        if user.isActive == 1
+          option(value="1", selected) Yes
+          option(value="0") No
+        else 
+          option(value="1") Yes
+          option(value="0", selected) No
+    div.form-group
+      label(for='roleId') Role
+      select.form-control#roleId(name="roleId")
+        each role in roles
+          if role.roleId == user.roleId
+            option(value="#{role.roleId}", selected)= role.roleName
+          else 
+            option(value="#{role.roleId}")= role.roleName
+    div.checkbox
+      label(for='changepass') 
+        input#changepass(type='checkbox', name='changepass', placeholder='Change Password')
+        | Click to change password
+    div#edit-password.hide
+      div.form-group
+        label(for='password_login') Password
+        input.form-control#password_login(type='password', name='password', placeholder='Password')
+      div.form-group
+        label(for='confirm_password') Confirm Password
+        input.form-control#confirm_password(type='password', name='confirm_password', placeholder='Confirm Password')
+    button.btn.btn-success(type='submit') Save
+append javascripts
+  script(src='/javascripts/user.js')

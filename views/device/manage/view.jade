@@ -1,0 +1,35 @@
+extends ./../../templates/2columns-left.jade
+
+block menu-left
+  include ./menu.jade
+block content
+  div.device-manage-block
+    form(method="POST", action="/device/manage/save")
+      each device in devices
+        div.device-settings-block
+          h3.device-title= device.deviceName
+          each attribute in device.attributes
+            div.device-attribute-block
+              div.row
+                div.col-xs-12.col-sm-6.col-lg-4.attribute-block
+                  div.attribute-name= attribute.attributeName
+                  div.attribute-value
+                    each value in attribute.dataValues.values
+                      if attribute.isConfigurable
+                        if attribute.input == "input"
+                          input(name="value[#{attribute.attributeId}]", value="#{value.value}")
+                        else if attribute.input == "dropdown"
+                          select(name="value[#{attribute.attributeId}]")
+                            each label in attribute.options.split(',')
+                              if value.value == label
+                                option(value="#{label}", selected)= label
+                              else
+                                option(value="#{label}")= label
+                        else if attribute.input == "checkbox"
+
+                        else if attribute.input == "color-picker"
+
+                        else if attribute.input == "slider"
+                      else
+                        = value.value + " " + attribute.suffixText
+      button.btn.btn-primary(type="submit") Save

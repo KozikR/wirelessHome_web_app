@@ -1,0 +1,11 @@
+include ./../partials/head.jade
+body
+  include ./../partials/header.jade
+  div.container
+    include ./../partials/flash.jade
+    div.row
+      div.main-container.one-column
+        block content
+  include ./../partials/footer.jade
+block javascripts
+  include ./../partials/javascripts.jade

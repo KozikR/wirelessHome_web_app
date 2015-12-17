@@ -1,0 +1,19 @@
+extends ./../templates/1column.jade
+
+block content
+  div.dashboard-server-image.hidden-sm.hidden-xs
+    img(src="/images/homepage-server-icon.png")
+  each deviceType in deviceTypes
+    div.device-type-block
+      h4.device-type-name= deviceType.deviceTypeName
+      each device in deviceType.devices
+        p.device
+          if device.status == true
+            span.status.status-on
+          else
+            span.status.status-off
+          span.device-name=device.deviceName
+
+  
+append javascripts
+  script(src='/javascripts/dashboard.js')

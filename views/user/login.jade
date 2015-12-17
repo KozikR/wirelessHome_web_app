@@ -1,0 +1,11 @@
+extends ./../templates/1column.jade
+block content
+  h1 Log in
+  form(method='POST', action='/authentication')
+    div.form-group
+      label(for='email_login') Email Address
+      input.form-control#email_login(type='email', name='email', placeholder='Email Address')
+    div.form-group
+      label(for='password_login') Password
+      input.form-control#password_login(type='password', name='password', placeholder='Password')
+    button.btn.btn-success(type='submit') Login

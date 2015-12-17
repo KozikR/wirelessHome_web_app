@@ -1,0 +1,44 @@
+nav.navbar.navbar-default.navbar-fixed-top
+  .container
+    .navbar-header
+      button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#navbar', aria-expanded='false', aria-controls='navbar')
+        span.sr-only Toggle navigation
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+      a.navbar-brand(href='/') wirelessHome
+    #navbar.navbar-collapse.collapse(aria-expanded='false', style='height: 0.909091px;')
+      if !user
+        ul.nav.navbar-nav.navbar-right
+          li.navbar-button
+            a(href='/login') 
+              button.btn.btn-default Log in
+          li.navbar-button
+            a(href='/join')
+              button.btn.btn-success Sign up
+      ul.nav.navbar-nav
+        if user
+          if user.roleCode == 'admin'
+            li
+              a(href='/adminDashboard') Home
+            li
+              a(href='/user/index') User list
+        
+          else 
+            li
+              a(href='/dashboard') Home
+            li
+              a(href='/device/manage/index') Manage
+            li
+              a(href='/dashboard') Statistics
+        else
+          li
+            a(href='/contact') Changelog
+
+      ul.nav.navbar-nav.navbar-right
+        if user
+          li.navbar-button
+            a(href='/logout') 
+              button.btn.btn-default Log out
+        li
+          //a(href='/contact') Contact
